@@ -1,36 +1,44 @@
-
 class Player
-  attr_accessor :name, :selected_values
 
-  def initialize(name)
-    @name = name
-    @@selected_values = []
+  attr_accessor :name, :selected_values, :callback_valid_input, :player_input
+
+  def initialize(number)
+    @number=number
+    @players_inputs=[]
   end
 
-  def turn
-    prompt
-    get_position
+  def get_player_name(number)
+    print "Player #{number}: What is your name?"
+    puts " "
+    player1_name = gets.chomp
+    puts "wolecome #{player1_name}"
   end
 
-  def prompt
-    puts "#{name}, it's your turn now!"
+  def game_instructions
+    puts "player number #{@number}, it is your turn!"
+    puts "choose number between 1-9:"
+    puts "------------------------------ "
   end
 
-  def get_position
-    position = gets.chomp.to_i
-    while !(1..9).to_a.include?(position) || @@selected_values.include?(position) do
+  def user_input(counter)
+    @callback_valid_input=false
+    @player_input = gets.chomp.to_i
+    if ((1..9).to_a.include? @player_input) && (!@players_inputs.include? @player_input)
+      @players_inputs <<@player_input
+      @callback_valid_input=true
+    else
       case
-        when @@selected_values.include?(position)
-          puts "This spot is taken"
-          position = gets.chomp.to_i
-          p position
-        when !(1..9).to_a.include?(position)
-          puts "#{name} you need to insert a number between 1-9"
-          position = gets.chomp.to_i
-          p position
+        when @players_inputs.include?(@player_input)
+          puts "this cell already taken"
+          @callback_valid_input=false
+        when !(1..9).to_a.include?(@player_input)
+          puts "please insert number between 1-9"
+          @callback_valid_input=false
+        else
+          puts "Some eror occured"
+          @callback_valid_input=false
       end
     end
-    @@selected_values << position
-    position
-    end
+  end
+
 end
