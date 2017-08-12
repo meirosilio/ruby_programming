@@ -17,9 +17,6 @@ class Main
   end
   def play
     counter=0
-
-    p @new_board.win
-
     while (@new_board.win==false)  && (counter<9)
       @player1.user_input(counter)
       if @player1.callback_valid_input==true
@@ -29,7 +26,6 @@ class Main
       @new_board.check_winner?
     end
     if (@new_board.win==true) && (counter<9)
-      p counter
       if counter%2==0
         puts "#{@player2.player_name} won the game"
       else
