@@ -22,12 +22,14 @@ class Board
     if (counter%2==0)&& (counter<9)
       @game_options[player_input-1]="X"
       draw_board
+      puts "Play two its your turn"
     elsif counter>8
       @game_options[player_input-1]="X"
       draw_board
     else
       @game_options[player_input-1]="O"
       draw_board
+      puts "Play one its your turn"
     end
   end
 

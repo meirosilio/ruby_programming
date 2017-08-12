@@ -31,9 +31,9 @@ class Main
     if (@new_board.win==true) && (counter<9)
       p counter
       if counter%2==0
-        puts "2 won sldakds;ldaks;dk"
+        puts "#{@player2.player_name} won the game"
       else
-        puts "1 won ------------------"
+        puts "#{@player1.player_name} won the game"
       end
     end
     if (counter==9) && (@new_board.win==false)

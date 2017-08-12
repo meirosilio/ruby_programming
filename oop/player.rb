@@ -1,6 +1,6 @@
 class Player
 
-  attr_accessor :name, :selected_values, :callback_valid_input, :player_input
+  attr_accessor :name, :selected_values, :callback_valid_input, :player_input, :player_name
 
   def initialize(number)
     @number=number
@@ -10,8 +10,8 @@ class Player
   def get_player_name(number)
     print "Player #{number}: What is your name?"
     puts " "
-    player1_name = gets.chomp
-    puts "wolecome #{player1_name}"
+    @player_name = gets.chomp
+    puts "wolecome #{@player_name}"
   end
 
   def game_instructions
